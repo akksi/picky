@@ -1,94 +1,165 @@
-# Cat Food Tracker
+# Picky - Cat Food Tracker 🐱
 
-A mobile app that helps cat owners track their cats' food preferences.
+A full-stack mobile application that helps cat owners track their cats' food preferences with ratings and analytics.
 
-## Features
+## 📦 Monorepo Structure
 
-- **Manage Cats**: Add and manage your cats with details like name, breed, and age
-- **Food Database**: Add cat foods with brand, name, and type (wet, dry, treats, etc.)
-- **Rating System**: Rate each food for each cat with a simple like/dislike system
-- **Catalogue**: View statistics showing how many cats liked or disliked each food
-- **Data Persistence**: All data is saved locally on your device
+This repository contains both the mobile app and backend API:
 
-## Getting Started
-
-### Prerequisites
-
-- Node.js (v14 or higher)
-- npm or yarn
-- Expo Go app on your mobile device (for testing)
-
-### Installation
-
-1. Navigate to the project directory:
-```bash
-cd CatFoodTracker
+```
+picky/
+├── mobile/           # React Native mobile app (iOS, Android, Web)
+├── backend/          # Node.js/Express REST API + PostgreSQL
+├── docs/             # Documentation (coming soon)
+└── README.md         # This file
 ```
 
-2. Install dependencies:
+## 🚀 Quick Start
+
+### Mobile App
+
 ```bash
+cd mobile
 npm install
-```
-
-### Running the App
-
-#### On iOS:
-```bash
-npm run ios
-```
-
-#### On Android:
-```bash
-npm run android
-```
-
-#### On Web:
-```bash
-npm run web
-```
-
-#### Using Expo Go:
-```bash
 npx expo start
 ```
-Then scan the QR code with your phone using the Expo Go app.
 
-## Usage
+**Options:**
+- Press `i` for iOS Simulator
+- Press `a` for Android Emulator
+- Press `w` for Web Browser
+- Scan QR code with Expo Go app
 
-1. **Add Cats**: Go to the "Cats" tab and tap "+ Add Cat" to add your cats
-2. **Add Foods**: Go to the "Foods" tab and tap "+ Add Food" to add cat foods
-3. **Rate Foods**: From the Cats screen, tap on a cat to rate foods for that cat
-4. **View Statistics**: Go to the "Catalogue" tab to see which foods are most liked
+**Full guide:** See [mobile/README.md](mobile/README.md)
 
-## Technologies Used
+### Backend API
 
-- React Native
-- Expo
-- TypeScript
-- React Navigation
-- AsyncStorage for local data persistence
-
-## Project Structure
-
-```
-CatFoodTracker/
-├── src/
-│   ├── screens/         # App screens
-│   │   ├── CatsScreen.tsx
-│   │   ├── AddCatScreen.tsx
-│   │   ├── FoodsScreen.tsx
-│   │   ├── AddFoodScreen.tsx
-│   │   ├── RatingsScreen.tsx
-│   │   └── CatalogueScreen.tsx
-│   ├── types/           # TypeScript type definitions
-│   │   └── index.ts
-│   └── utils/           # Utility functions
-│       └── storage.ts   # AsyncStorage helpers
-├── App.tsx              # Main app component with navigation
-└── package.json
+```bash
+cd backend
+npm install
+./setup.sh          # Set up PostgreSQL database
+npm run dev         # Start API server on http://localhost:3000
 ```
 
-## License
+**Full guide:** See [BACKEND_SETUP.md](BACKEND_SETUP.md)
+
+## ✨ Features
+
+### Mobile App
+- 🐱 **Cat Management** - Add and manage multiple cats with details
+- 🍽️ **Food Database** - Track different cat foods by brand and type
+- 👍👎 **Rating System** - Simple like/dislike interface for each cat
+- 📊 **Analytics** - View which foods are most popular across all cats
+- 💾 **Data Persistence** - Local storage (ready for cloud sync)
+- 🎨 **Modern UI** - Beautiful iOS-inspired design
+
+### Backend API
+- 🔐 **User Authentication** - JWT-based secure login/registration
+- 📡 **RESTful API** - Clean endpoints for all operations
+- 🗄️ **PostgreSQL Database** - Robust data storage
+- 📈 **Statistics** - Aggregated food popularity data
+- 🔒 **Authorization** - Users can only access their own data
+- 📝 **TypeScript** - Full type safety
+
+## 🛠️ Tech Stack
+
+### Mobile (`/mobile`)
+| Technology | Purpose |
+|------------|---------|
+| React Native | Cross-platform mobile framework |
+| Expo | Development platform & build tool |
+| TypeScript | Type safety |
+| React Navigation | Navigation library |
+| AsyncStorage | Local data persistence |
+
+### Backend (`/backend`)
+| Technology | Purpose |
+|------------|---------|
+| Node.js | JavaScript runtime |
+| Express | Web framework |
+| PostgreSQL | Database |
+| TypeScript | Type safety |
+| JWT | Authentication |
+| bcryptjs | Password hashing |
+
+## 📱 Screenshots
+
+*Coming soon - add screenshots of the mobile app in action!*
+
+## 🗺️ Roadmap
+
+- [ ] Connect mobile app to backend API
+- [ ] Add login/register screens
+- [ ] Cloud data synchronization
+- [ ] Photo upload for cats
+- [ ] Share food recommendations
+- [ ] Dark mode support
+- [ ] Push notifications
+- [ ] Export data as CSV
+
+## 📖 Documentation
+
+- **[Mobile App README](mobile/README.md)** - Mobile app setup and usage
+- **[Quick Start Guide](QUICK_START.md)** - Get the mobile app running fast
+- **[Backend Setup](BACKEND_SETUP.md)** - API and database setup
+- **[Backend API Docs](backend/README.md)** - API endpoints reference
+- **[Project Summary](PROJECT_SUMMARY.md)** - Detailed project overview
+
+## 🤝 Contributing
+
+This is currently a personal project, but contributions are welcome!
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📝 Development Workflow
+
+### Working on Mobile App
+```bash
+cd mobile
+npm run ios     # or android, or web
+```
+
+### Working on Backend
+```bash
+cd backend
+npm run dev     # Hot reload enabled
+```
+
+### Running Both Together
+```bash
+# Terminal 1 - Backend
+cd backend && npm run dev
+
+# Terminal 2 - Mobile
+cd mobile && npx expo start
+```
+
+## 🐛 Troubleshooting
+
+### Mobile App Issues
+- Clear Expo cache: `cd mobile && npx expo start --clear`
+- Reinstall dependencies: `rm -rf node_modules && npm install`
+
+### Backend Issues
+- Check PostgreSQL is running: `brew services list`
+- Reset database: `cd backend && npm run db:migrate`
+
+### Monorepo Issues
+- Make sure you're in the right directory (`mobile/` or `backend/`)
+- Each has its own `node_modules` and `package.json`
+
+## 📄 License
 
 MIT
 
+## 🙏 Acknowledgments
+
+Built with love for cat owners everywhere! 🐱💕
+
+---
+
+**Repository:** [github.com/akksi/picky](https://github.com/akksi/picky)
